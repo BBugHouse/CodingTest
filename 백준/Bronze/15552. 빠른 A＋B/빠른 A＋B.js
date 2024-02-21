@@ -1,8 +1,8 @@
 const fs = require('fs');
 const [_, ...input] = fs.readFileSync('./dev/stdin').toString().trim().split('\n');
-let answer = '';
+let answer = [];
 input.forEach(e => {
   const [a, b] = e.split(' ').map(Number);
-  answer += a + b + '\n';
+  answer.push(a + b);
 })
-console.log(answer);
+console.log(answer.join('\n'));
