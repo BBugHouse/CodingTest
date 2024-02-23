@@ -10,11 +10,12 @@ input.forEach((str) => {
   let group = true;
   let arr = [];
   [...str].forEach((s) => {
-    if (arr.includes(s) && arr[arr.length - 1] != s) {
+    const isInclude = arr.includes(s);
+    if (isInclude && arr[arr.length - 1] != s) {
       group = false;
       return false;
     }
-    arr.push(s);
+    if (!isInclude) arr.push(s);
   });
   if (group) count++;
 });
