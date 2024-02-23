@@ -1,15 +1,14 @@
 const fs = require('fs');
 const input = fs.readFileSync('./dev/stdin').toString().trim().toUpperCase();
-const set = new Set(input);
 let answer = [];
-const arr = [...input];
-set.forEach((v) => {
-  let length = 0;
-  arr.forEach((v2) => {
-    if (v == v2) length++;
-  });
-  if (!answer[length]) answer[length] = [];
-  answer[length].push(v);
+[...input].forEach((v) => {
+  if (!answer[v]) answer[v] = 0;
+  answer[v]++;
 });
-const max = Math.max(...Object.keys(answer).map(Number));
-console.log(answer[max].length >= 2 ? '?' : answer[max][0]);
+const values = Object.values(answer);
+const max = Math.max(...values);
+let words = [];
+for (let key in answer) {
+  if (answer[key] === max) words.push(key);
+}
+console.log(words.length >= 2 ? '?' : words[0]);
