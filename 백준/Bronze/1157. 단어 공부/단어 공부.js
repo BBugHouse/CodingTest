@@ -2,9 +2,10 @@ const fs = require('fs');
 const input = fs.readFileSync('./dev/stdin').toString().trim().toUpperCase();
 const set = new Set(input);
 let answer = [];
+const arr = [...input];
 set.forEach((v) => {
   let length = 0;
-  [...input].forEach((v2) => {
+  arr.forEach((v2) => {
     if (v == v2) length++;
   });
   if (!answer[length]) answer[length] = [];
