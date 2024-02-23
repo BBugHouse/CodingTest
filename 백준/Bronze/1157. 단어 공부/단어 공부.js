@@ -3,7 +3,10 @@ const input = fs.readFileSync('./dev/stdin').toString().trim().toUpperCase();
 const set = new Set(input);
 let answer = [];
 set.forEach((v) => {
-  const length = [...input].filter((v2) => v == v2).length;
+  let length = 0;
+  [...input].forEach((v2) => {
+    if (v == v2) length++;
+  });
   if (!answer[length]) answer[length] = [];
   answer[length].push(v);
 });
