@@ -4,7 +4,8 @@ const max = Math.max(...input.map((v) => v.length));
 let answer = '';
 for (let i = 0; i < max; i++) {
   input.forEach((v) => {
-    answer += v.trim()[i] || '';
+    if (!v.trim()[i]) return;
+    answer += v.trim()[i];
   });
 }
 console.log(answer);
