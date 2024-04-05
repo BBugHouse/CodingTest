@@ -1,3 +1,18 @@
 const fs = require('fs');
-const [n, b] = fs.readFileSync('./dev/stdin').toString().trim().split(' ');
-console.log((+n).toString(+b).toUpperCase());
+let [n, b] = fs
+  .readFileSync('./dev/stdin')
+  .toString()
+  .trim()
+  .split(' ')
+  .map(Number);
+
+const binary = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+let result = '';
+
+while (n) {
+  result += binary[n % b];
+  n = parseInt(n / b);
+}
+
+console.log([...result].reverse().join(''));
